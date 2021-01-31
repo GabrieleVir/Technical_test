@@ -1,0 +1,4 @@
+The first step will be to read every file to have a grasp of the project.
+The second step is to specify what I'll upgrade in the project.
+The documentation will come last.
+
