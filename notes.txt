@@ -1,0 +1,26 @@
+The types are not defined, is not a must but it is good to specify for reducing the interpretation.
+There are no namespaces for the classes.
+Vendors names doesn't are not specific enough.
+No comments on the methods.
+
+DB.php
+Sensitive datas are directly on the db.php file.
+The variables names are not specific enough.
+I prefer to use a ORM manager like doctrine. More safe and scalable.
+The class name is not specific enough and doesn't respect psr-1: Class names MUST be declared in StudlyCaps.
+
+CommentManager.php
+This file is causing side effects (including files with the constructor) and declaring new symbols (The class + the methods). A file should not do both.
+Not enough comments to explain this class.
+
+NewsManager.php
+This file is causing side effects (including files with the constructor) and declaring new symbols (The class + the methods). A file should not do both.
+Foreign keys in comments should delete on cascade. No method needed for finding and deleting all the comments linked to the news.
+
+index.php
+The applications constants should be placed in a separate configuration file that should be ignored by git (can also contains also the db credentials).
+There is no git in this project.
+
+sql
+The charset should be utf-8.
+Varchar shouldn't be random numbers.
