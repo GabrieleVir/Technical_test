@@ -32,6 +32,7 @@ Varchar shouldn't be random numbers.
 Comment.php
 No comments.
 The class variables should be private. That's why the getId exists.
+setId should not exist
 
 News.php
 Same issues than Comment.php
