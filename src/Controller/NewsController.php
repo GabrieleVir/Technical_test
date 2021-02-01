@@ -12,7 +12,7 @@ use src\Repository\NewsRepository;
 class NewsController
 {
     /**
-     * @var
+     * @var EntityManager
      */
     private $em;
 
@@ -32,7 +32,7 @@ class NewsController
     /**
      * Display on the command lines all the news with their comments.
      *
-     * @return int
+     * @return array
      */
     public function getNewsWithTheirComments()
     {
@@ -50,7 +50,7 @@ class NewsController
             }
         }
 
-        return 1;
+        return ['status' => false, 'message' => 'done'];
     }
 
     /**
