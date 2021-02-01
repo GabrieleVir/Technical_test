@@ -2,13 +2,15 @@
 
 ## 1. Installation
 
-  - Go on the root of the project and use the command "composer install" then "composer update"
+  - Install the last version of composer if you don't have it.
+  - Go on the root of the project and use the command ```composer install``` then ```composer update```
   - Create a database-config.php inside the config folder using the database-config-template.php as reference.
-  - you can test the demo script in your shell: "php index.php"
+  - Create a database with the same name as the one you chose for database-config.php on 'dbname'
+  - On the root of the project use ```vendor/bin/doctrine orm:schema-tool:update```
+  - Import the demo/demo_data.sql inside your database.
+  - Use ``` php index.php ``` to run the demo script.
 
-## 2. Expectations
+ ## 2. Libraries used
 
-This simple application works, but with very old-style monolithic codebase, so do anything you want with it, to make it:
-
-  - easier to work with
-  - more maintainable
+   - Composer for a package manager
+   - Doctrine for an ORM.
