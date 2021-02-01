@@ -2,9 +2,8 @@
 
 ## 1. Installation
 
-  - create an empty database named "phptest" on your MySQL server
-  - import the dbdump.sql in the "phptest" database
-  - put your MySQL server credentials in the constructor of DB class
+  - Go on the root of the project and use the command "composer install" then "composer update"
+  - Create a database-config.php inside the config folder using the database-config-template.php as reference.
   - you can test the demo script in your shell: "php index.php"
 
 ## 2. Expectations
