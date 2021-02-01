@@ -1,8 +1,0 @@
-The first step will be to read every file to have a grasp of the project.
-The second step is to specify what I'll upgrade in the project.
-The documentation will come last.
-
-Second step:
-
-First, I'm going to have a good folder structure and install doctrine with composer.
-Doctrine is an orm, it is very useful to separate the entities with the code logic. It is very scalable.

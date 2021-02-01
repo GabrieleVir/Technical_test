@@ -6,7 +6,7 @@
   - Go on the root of the project and use the command ```composer install``` then ```composer update```
   - Create a database-config.php inside the config folder using the database-config-template.php as reference.
   - Create a database with the same name as the one you chose for database-config.php on 'dbname'
-  - On the root of the project use ```vendor/bin/doctrine orm:schema-tool:update```
+  - On the root of the project use ```vendor/bin/doctrine orm:schema-tool:update --force```
   - Import the demo/demo_data.sql inside your database.
   - Use ``` php index.php ``` to run the demo script.
 
