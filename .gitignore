@@ -1,2 +1,3 @@
 /attack_plan.txt
-/vendor
+/vendor/*
+/config/database-config.php

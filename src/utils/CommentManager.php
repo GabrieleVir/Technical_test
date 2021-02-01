@@ -6,8 +6,8 @@ class CommentManager
 
 	private function __construct()
 	{
-		require_once(ROOT . '/utils/DB.php');
-		require_once(ROOT . '/class/Comment.php');
+		require_once(ROOT . '/src/utils/DB.php');
+		require_once(ROOT . '/src/Entity/Comment.php');
 	}
 
 	public static function getInstance()

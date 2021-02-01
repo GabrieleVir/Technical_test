@@ -1,9 +1,10 @@
 
 The types are not defined, is not a must but it is good to specify for reducing the interpretation.
 There are no namespaces for the classes.
-Vendors names are not specific enough.
+Vendors names are not specific enough + should be camelCase.
 No comments on the methods.
 Need to create folders Entity and Repository.
+
 
 DB.php
 Sensitive datas are directly on the db.php file.

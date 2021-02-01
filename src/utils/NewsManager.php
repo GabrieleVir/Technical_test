@@ -6,9 +6,9 @@ class NewsManager
 
 	private function __construct()
 	{
-		require_once(ROOT . '/utils/DB.php');
-		require_once(ROOT . '/utils/CommentManager.php');
-		require_once(ROOT . '/class/News.php');
+		require_once(ROOT . '/src/utils/DB.php');
+		require_once(ROOT . '/src/utils/CommentManager.php');
+		require_once(ROOT . '/src/Entity/News.php');
 	}
 
 	public static function getInstance()
