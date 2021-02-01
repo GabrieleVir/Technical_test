@@ -6,7 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Doctrine\ORM\Mapping\OneToMany;
 
 /**
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="src\Repository\NewsRepository")
  * @ORM\Table(name="news")
  */
 class News
