@@ -1,20 +1,63 @@
 <?php
+// src/Entity/Comment.php
 
+use Doctrine\ORM\Mapping as ORM;
+use Doctrine\ORM\Mapping\JoinColumn;
+use Doctrine\ORM\Mapping\ManyToOne;
+
+/**
+ * @ORM\Entity
+ * @ORM\Table(name="comment")
+ */
 class Comment
 {
-	protected $id, $body, $createdAt, $newsId;
+    /**
+     * @var int
+     *
+     * @ORM\Id
+     * @ORM\Column(type="integer")
+     * @ORM\GeneratedValue
+     */
+    private $id;
 
-	public function setId($id)
-	{
-		$this->id = $id;
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string")
+     */
+    private $body;
 
-		return $this;
-	}
+    /**
+     * @var DateTime
+     *
+     * @ORM\Column(type="datetime", name="created_at")
+     */
+    private $createdAt;
 
+    /**
+     * @var News
+     *
+     * @ManyToOne(targetEntity="News")
+     * @JoinColumn(name="news_id", referencedColumnName="id")
+     */
+    private $news;
+
+    /**
+     * Get Id
+     *
+     * @return int
+     */
 	public function getId()
 	{
 		return $this->id;
 	}
+
+    /**
+     * Set body
+     *
+     * @param $body
+     * @return Comment $this
+     */
 	public function setBody($body)
 	{
 		$this->body = $body;
@@ -22,31 +65,58 @@ class Comment
 		return $this;
 	}
 
+    /**
+     * Get body
+     *
+     * @return string
+     */
 	public function getBody()
 	{
 		return $this->body;
 	}
 
-	public function setCreatedAt($createdAt)
+    /**
+     * Set createdAt
+     *
+     * @param DateTime $createdAt
+     * @return Comment $this
+     */
+	public function setCreatedAt(DateTime $createdAt)
 	{
 		$this->createdAt = $createdAt;
 
 		return $this;
 	}
 
+    /**
+     * Get createdAt
+     *
+     * @return DateTime
+     */
 	public function getCreatedAt()
 	{
 		return $this->createdAt;
 	}
 
-	public function getNewsId()
+    /**
+     * Get the news linked to the comment
+     *
+     * @return News
+     */
+	public function getNews()
 	{
-		return $this->newsId;
+		return $this->news;
 	}
 
-	public function setNewsId($newsId)
+    /**
+     * Set the news linked to the comment
+     *
+     * @param News $news
+     * @return Comment $this
+     */
+	public function setNews(News $news)
 	{
-		$this->newsId = $newsId;
+		$this->news = $news;
 
 		return $this;
 	}

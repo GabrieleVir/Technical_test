@@ -1,9 +1,9 @@
 
 The types are not defined, is not a must but it is good to specify for reducing the interpretation.
-There are no namespaces for the classes.
 Vendors names are not specific enough + should be camelCase.
 No comments on the methods.
 Need to create folders Entity and Repository.
+I like to put the path of the file on the first line.
 
 
 DB.php
@@ -27,13 +27,17 @@ The applications constants should be placed in a separate configuration file tha
 There is no git in this project.
 
 sql
-The charset should be utf-8.
-Varchar shouldn't be random numbers.
+The charset should be utf-8 for internationalisation.
+Varchar shouldn't be random numbers, the smaller the best.
+created at should always have a date because it is a data that we will always have.
+Comments should always have a news_id. The not null constraint is necessary.
 
 Comment.php
 No comments.
 The class variables should be private. That's why the getId exists.
-setId should not exist
+setId should not exist.
+Typing the variables and return values makes a more robust program and gives us more control.
 
 News.php
 Same issues than Comment.php
+With doctrine, it becomes very easy to recover all the comments of a news.

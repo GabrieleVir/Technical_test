@@ -11,6 +11,8 @@ require_once "vendor/autoload.php";
         'user'     => "database_user",
         'password' => "database_password",
         'dbname'   => "database_name",
+        'host'     => "database_host",
+        'port'     => "database_port"
         );
  */
 require_once "database-config.php";

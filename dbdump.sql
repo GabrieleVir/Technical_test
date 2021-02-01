@@ -25,10 +25,10 @@ DROP TABLE IF EXISTS `comment`;
 CREATE TABLE `comment` (
   `id` int(10) NOT NULL AUTO_INCREMENT,
   `body` mediumtext,
-  `created_at` datetime DEFAULT NULL,
-  `news_id` int(10) DEFAULT NULL,
+  `createdAt` datetime NOT NULL,
+  `news_id` int(10) DEFAULT NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -50,11 +50,11 @@ DROP TABLE IF EXISTS `news`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `news` (
   `id` int(10) NOT NULL AUTO_INCREMENT,
-  `title` varchar(511) DEFAULT NULL,
+  `title` varchar(255) DEFAULT NULL,
   `body` mediumtext,
-  `created_at` datetime DEFAULT NULL,
+  `created_at` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
