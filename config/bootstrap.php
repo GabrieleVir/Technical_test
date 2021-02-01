@@ -1,5 +1,6 @@
 <?php
 // bootstrap.php
+define ("ROOT",  dirname(__DIR__, 1));
 /**
  * This will load all the classes needed
  */
@@ -25,7 +26,7 @@ $isDevMode = true;
 $proxyDir = null;
 $cache = null;
 $useSimpleAnnotationReader = false;
-$config = Setup::createAnnotationMetadataConfiguration(array(__DIR__."/src/"), $isDevMode, $proxyDir, $cache, $useSimpleAnnotationReader);
+$config = Setup::createAnnotationMetadataConfiguration(array(ROOT . "/src/"), $isDevMode, $proxyDir, $cache, $useSimpleAnnotationReader);
 $config->addEntityNamespace('Entity', 'src\Entity');
 
 $conn = \Doctrine\DBAL\DriverManager::getConnection($connectionParams);
