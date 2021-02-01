@@ -1,12 +1,13 @@
 <?php
 // src/Entity/Comment.php
+namespace src\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\ORM\Mapping\JoinColumn;
 use Doctrine\ORM\Mapping\ManyToOne;
 
 /**
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="")
  * @ORM\Table(name="comment")
  */
 class Comment

@@ -1,5 +1,6 @@
 <?php
 // src/Entity/News.php
+namespace src\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\ORM\Mapping\OneToMany;
