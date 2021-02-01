@@ -66,3 +66,7 @@ The parameters should be private to allow more control on how the data is manage
 The setterId should not exist. The app should should never change the id of an element. Looking at the comment.php and 
 news.php, it makes me realise that doctrine does this better. Re-inventing the wheel is not a good idea, always use a 
 library that have multiple devs working on it instead of creating one.
+
+## 11. Sanitization of user input
+
+The user input has not been sanitize when putting it in the db. Doctrine solves this.

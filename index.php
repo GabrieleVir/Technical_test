@@ -10,7 +10,7 @@ use src\Controller\CommentController;
 
 $newsController = new NewsController($entityManager);
 $commentController = new CommentController($entityManager);
-$newsController->displayAllNewsWithTheirComments();
+$newsController->getNewsWithTheirComments();
 
 /** @var \Doctrine\Common\Collections\ArrayCollection $getAllComments */
 $getAllComments = $commentController->getAllComments();

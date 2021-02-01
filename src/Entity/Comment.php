@@ -25,9 +25,9 @@ class Comment
     /**
      * @var string
      *
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="text")
      */
-    private $body;
+    private $content;
 
     /**
      * @var DateTime
@@ -55,26 +55,26 @@ class Comment
 	}
 
     /**
-     * Set body
+     * Set content
      *
-     * @param $body
+     * @param $content
      * @return Comment $this
      */
-	public function setBody($body)
+	public function setContent($content)
 	{
-		$this->body = $body;
+		$this->content = $content;
 
 		return $this;
 	}
 
     /**
-     * Get body
+     * Get content
      *
      * @return string
      */
-	public function getBody()
+	public function getContent()
 	{
-		return $this->body;
+		return $this->content;
 	}
 
     /**

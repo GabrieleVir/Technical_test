@@ -18,14 +18,14 @@ class CommentController
     /**
      * @var CommentRepository
      */
-    private $commentRepo;
+    private $commentRepository;
 
     public function __construct(EntityManager $em)
     {
         /** @var EntityManager em */
         $this->em = $em;
-        /** @var CommentRepository commentRepo */
-        $this->commentRepo = $em->getRepository("Entity:Comment");
+        /** @var CommentRepository commentRepository */
+        $this->commentRepository = $em->getRepository("Entity:Comment");
     }
 
     /**
@@ -35,40 +35,45 @@ class CommentController
      */
     public function getAllComments()
     {
-        return $this->commentRepo->findAll();
+        return $this->commentRepository->findAll();
     }
 
     /**
-     * @param int $commentId
-     * @return int
+     * @param $commentId
+     * @return array
      * @throws \Doctrine\ORM\ORMException
+     * @throws \Doctrine\ORM\OptimisticLockException
      */
-    public function deleteComment(Comment $commentToDelete)
+    public function deleteComment($commentId)
     {
-        $this->em->remove($commentToDelete);
-        $this->em->persist($commentToDelete);
-        $this->em->flush();
-        return 1;
+        try {
+            /** @var Comment $commentToDelete */
+            $commentToDelete = $this->commentRepository->findOneBy(['id' => $commentId]);
+            $this->em->remove($commentToDelete);
+            $this->em->persist($commentToDelete);
+            $this->em->flush();
+            return ['status' => true, 'message' => 'done'];
+        } catch (ORMException $e) {
+            return ['status' => false, 'message' => $e->getMessage()];
+        }
     }
 
 
     /**
      * Add a comment to a news. Return the last comment id added to the database.
      *
-     * @param string $body
+     * @param string $content
      * @param int $newsId
      * @return mixed
      * @throws \Doctrine\ORM\ORMException
      */
-    public function addCommentForNews($body, News $news)
+    public function addCommentForNews($content, News $news)
     {
-        /** @var \DateTime $presentDateAndTime */
-        $presentDateAndTime = new \DateTime();
         /** @var Comment $commentToAdd */
         $commentToAdd = new Comment();
-        $commentToAdd->setBody($body);
+        $commentToAdd->setContent($content);
         $commentToAdd->setNews($news);
-        $commentToAdd->setCreatedAt($presentDateAndTime);
+        $commentToAdd->setCreatedAt(new \DateTime());
         $this->em->persist($commentToAdd);
         $this->em->flush();
         return $commentToAdd->getId();

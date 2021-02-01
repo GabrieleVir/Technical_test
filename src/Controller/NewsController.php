@@ -3,7 +3,9 @@
 
 namespace src\Controller;
 
+use Doctrine\DBAL\Exception;
 use Doctrine\ORM\EntityManager;
+use Doctrine\ORM\ORMException;
 use src\Entity\News;
 use src\Repository\NewsRepository;
 
@@ -32,7 +34,7 @@ class NewsController
      *
      * @return int
      */
-    public function displayAllNewsWithTheirComments()
+    public function getNewsWithTheirComments()
     {
         /** @var NewsRepository $newsRepository */
         $newsRepository = $this->em->getRepository("Entity:News");
@@ -56,45 +58,49 @@ class NewsController
      *
      * @return array|null
      */
-    public function getAllNews()
+    public function getNews()
     {
         return $this->newsRepository->findAll();
     }
 
     /**
-     * Add a record in news table. Return the last id added to the database.
-     *
      * @param string $title
-     * @param string $body
-     * @return int
-     * @throws \Doctrine\ORM\ORMException
+     * @param string $content
+     * @return array|int
+     * @throws ORMException
      * @throws \Doctrine\ORM\OptimisticLockException
      */
-    public function addNews($title, $body)
+    public function addNews($title, $content)
     {
-        $presentDateAndTime = new \DateTime();
-        $newsToAdd = new News();
-        $newsToAdd->setBody($body);
-        $newsToAdd->setTitle($title);
-        $newsToAdd->setCreatedAt($presentDateAndTime);
-        $this->em->persist($newsToAdd);
-        $this->em->flush();
-        return $newsToAdd->getId();
+        try {
+            /** @var News $newsToAdd */
+            $newsToAdd = new News();
+            $newsToAdd->setContent($content)
+                        ->setTitle($title)
+                        ->setCreatedAt(new \DateTime());
+            $this->em->persist($newsToAdd);
+            $this->em->flush();
+            return ['status' => true, 'message' => 'done'];
+        } catch (ORMException $e) {
+            return ['status' => false, 'message' => $e->getMessage()];
+        }
     }
 
     /**
-     * Delete a news. The cascade will also delete all the comments linked to this news.
-     *
-     * @param News $newsToDelete
-     * @return int
-     * @throws \Doctrine\ORM\ORMException
-     * @throws \Doctrine\ORM\OptimisticLockException
+     * @param int $newsId
+     * @return array
      */
-    public function deleteNews(News $newsToDelete)
+    public function deleteNews($newsId)
     {
-        $this->em->remove($newsToDelete);
-        $this->em->flush();
-        return 1;
+        try {
+            /** @var News $newsToDelete */
+            $newsToDelete = $this->newsRepository->findOneBy(['id' => $newsId]);
+            $this->em->remove($newsToDelete);
+            $this->em->flush();
+            return ['status' => true, 'message' => 'done'];
+        } catch (ORMException $e) {
+            return ['status' => false, 'message' => $e->getMessage()];
+        }
     }
 
 }
