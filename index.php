@@ -1,18 +1,16 @@
 <?php
+/**
+ * This app will show all the news with their comments when runned and puts all the comments inside a variable.
+ * To run it write "php index.php" on the command line.
+ */
+// /index.php
+require_once("config/bootstrap.php");
+use src\Controller\NewsController;
+use src\Controller\CommentController;
 
-define('ROOT', __DIR__);
-require_once(ROOT . '/src/utils/NewsManager.php');
-require_once(ROOT . '/src/utils/CommentManager.php');
+$newsController = new NewsController($entityManager);
+$commentController = new CommentController($entityManager);
+$newsController->displayAllNewsWithTheirComments();
 
-foreach (NewsManager::getInstance()->listNews() as $news) {
-	echo("############ NEWS " . $news->getTitle() . " ############\n");
-	echo($news->getBody() . "\n");
-	foreach (CommentManager::getInstance()->listComments() as $comment) {
-		if ($comment->getNewsId() == $news->getId()) {
-			echo("Comment " . $comment->getId() . " : " . $comment->getBody() . "\n");
-		}
-	}
-}
-
-$commentManager = CommentManager::getInstance();
-$c = $commentManager->listComments();
+/** @var \Doctrine\Common\Collections\ArrayCollection $getAllComments */
+$getAllComments = $commentController->getAllComments();

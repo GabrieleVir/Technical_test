@@ -2,11 +2,12 @@
 // src/Entity/News.php
 namespace src\Entity;
 
+use DateTime;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\ORM\Mapping\OneToMany;
 
 /**
- * @ORM\Entity(repositoryClass="src\Repository\NewsRepository")
+ * @ORM\Entity
  * @ORM\Table(name="news")
  */
 class News
