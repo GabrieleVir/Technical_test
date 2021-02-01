@@ -3,7 +3,6 @@
 
 namespace src\Controller;
 
-use Doctrine\DBAL\Exception;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\ORMException;
 use src\Entity\News;
